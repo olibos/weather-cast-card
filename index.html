@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body style="background-color: rgb(42, 29, 101);color:#fff;">
+  <fieldset>
+    <legend>Weather</legend>
+    <weather-sun></weather-sun>
+    <weather-partially-cloudy></weather-partially-cloudy>
+    <weather-rain></weather-rain>
+    <weather-thunderstorm></weather-thunderstorm>
+    <weather-snow></weather-snow>
+    <weather-rainy></weather-rainy>
+    <weather-broken-clouds></weather-broken-clouds>
+    <weather-scattered-clouds></weather-scattered-clouds>
+    <weather-mist></weather-mist>
+  </fieldset>
+  <fieldset>
+    <legend>Card</legend>
+    <div style="width:550px;height:220px;position: relative;">
+      <weather-cast-card id="demo"></weather-cast-card>
+    </div>
+  </fieldset>
+  <script type="module" src="/src/main.ts"></script>
+  <script>
+    customElements.whenDefined('weather-cast-card').then(() =>
+    {
+      const demo = document.getElementById('demo');
+      demo.setConfig({ temperature: 'temperature', humidity: 'humidity', pressure: 'pressure', forecast: 'forecast' });
+      demo.hass = {
+        states: {
+          forecast: {
+            state: 'sunny',
+            attributes: {
+              forecast: [{ templow: '0', temperature: '40' }]
+            }
+          },
+          humidity: { state: '45' },
+          pressure: { state: '1015' },
+          temperature: { state: '18' }
+        }
+      };
+    });
+  </script>
+</body>
+
+</html>
