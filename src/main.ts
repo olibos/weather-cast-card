@@ -32,37 +32,63 @@ function getIcon(type: string)
   switch (type)
   {
     case 'hail':
-    case 'rain':
+      return html`<weather-three-clouds color-change>
+      <weather-parts-snow slot="1"></weather-parts-snow>
+      <weather-parts-snow slot="2"></weather-parts-snow>
+      <weather-parts-snow slot="3"></weather-parts-snow>
+    </weather-three-clouds>`;
+
     case 'pouring':
-      return html`<weather-rainy />`;
+    case 'rain':
+      return html`<weather-cloud color-change>
+      <weather-parts-rain></weather-parts-rain>
+    </weather-cloud>`;
+
 
     case 'rainy':
-      return html`<weather-rain />`;
+      return html`<weather-cloud>
+      <weather-parts-rain></weather-parts-rain>
+    </weather-cloud>`;
 
     case 'fog':
       return html`<weather-mist />`;
 
     case 'sleet':
     case 'snowy-rainy':
+      return html`<weather-three-clouds>
+      <weather-parts-rain slot="1"></weather-parts-rain>
+      <weather-parts-snow slot="2"></weather-parts-snow>
+      <weather-parts-rain slot="3"></weather-parts-rain>
+    </weather-three-clouds>`;      
+
     case 'snow':
     case 'snowy':
-      return html`<weather-snow />`;
+      return html`<weather-cloud>
+      <weather-parts-snow></weather-parts-snow>
+    </weather-cloud>`;
 
-    // case 'wind':
-    // case 'windy':
-    // case 'windy-variant':
-    //   return 'wind';
+    case 'wind':
+    case 'windy':
+    case 'windy-variant':
+      return html`<weather-three-clouds></weather-three-clouds>`;
 
     case 'overcast':
     case 'cloudy':
     case 'partlycloudy':
     case 'partly-cloudy-day':
     case 'partly-cloudy-night':
-      return html`<weather-partially-cloudy />`;
+      return html`<weather-cloud sun></weather-cloud>`;
 
     case 'lightning':
-    case 'lightning-rainy':
-      return html`<weather-thunderstorm />`;
+      return html`<weather-cloud color-change>
+      <weather-parts-lightning></weather-parts-lightning>
+    </weather-cloud>`;
+
+case 'lightning-rainy':
+      return html`<weather-cloud color-change>
+      <weather-parts-rain></weather-parts-rain>
+      <weather-parts-lightning></weather-parts-lightning>
+    </weather-cloud>`;
 
     case 'clear-day':
     case 'clear-night':
@@ -77,21 +103,25 @@ export class WeatherCastCard extends LitElement
 {
   private config?: WeatherCastCardConfig;
 
-  @property({attribute: false})
+  @property({ attribute: false })
   hass?: HomeAssistant;
 
   setConfig(config: WeatherCastCardConfig)
   {
-    if (!config.temperature) {
+    if (!config.temperature)
+    {
       throw new Error('You need to define a temperature entity');
     }
-    if (!config.humidity) {
+    if (!config.humidity)
+    {
       throw new Error('You need to define a humidity entity');
     }
-    if (!config.pressure) {
+    if (!config.pressure)
+    {
       throw new Error('You need to define a pressure entity');
     }
-    if (!config.forecast) {
+    if (!config.forecast)
+    {
       throw new Error('You need to define a forecast entity');
     }
     this.config = config;

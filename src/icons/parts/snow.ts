@@ -5,114 +5,20 @@ import {
 } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-import {
-  cloud,
-  cloudColorChange,
-  common,
-} from './styles';
+const template = html`${new Array(10).fill(html`<div class="flake">${new Array(6).fill(html`<div class="flake-part"></div>`)}</div>`)}`;
 
-@customElement('weather-snow')
-export class Snow extends LitElement
+@customElement('weather-parts-snow')
+export class SnowPart extends LitElement
 {
     protected render(): unknown
     {
-        return html`
-<div class="cloud">
-    <div class="cloud-copy"></div>
-    <div class="snow">
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-        <div class="flake">
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-            <div class="flake-part"></div>
-        </div>
-    </div>
-</div>
-`;
+        return template;
     }
 
-    static get styles() 
+    static get styles()
     {
-        return [common, cloud, cloudColorChange, css`
-.cloud {
-    left: 30%;
-}
-
-.snow {
+        return [css`
+:host {
     position: absolute;
     width: 140%;
     height: 100%;
@@ -402,6 +308,6 @@ export class Snow extends LitElement
     animation: snowFlakeFall 4s 3s linear infinite;
     right: 10%;
 }
-        `];
+`];
     }
 }

@@ -12,13 +12,37 @@
   <fieldset>
     <legend>Weather</legend>
     <weather-sun></weather-sun>
-    <weather-partially-cloudy></weather-partially-cloudy>
-    <weather-rain></weather-rain>
-    <weather-thunderstorm></weather-thunderstorm>
-    <weather-snow></weather-snow>
-    <weather-rainy></weather-rainy>
-    <weather-broken-clouds></weather-broken-clouds>
-    <weather-scattered-clouds></weather-scattered-clouds>
+    <!-- partially-cloudy -->
+    <weather-cloud sun></weather-cloud>
+    <!-- rain -->
+    <weather-cloud sun>
+      <weather-parts-rain></weather-parts-rain>
+    </weather-cloud>
+    <!-- thunderstorm-->
+    <weather-cloud color-change>
+      <weather-parts-rain></weather-parts-rain>
+      <weather-parts-lightning></weather-parts-lightning>
+    </weather-cloud>
+    <weather-cloud color-change>
+      <weather-parts-snow></weather-parts-snow>
+    </weather-cloud>
+    <!-- rainy -->
+    <weather-two-clouds color-change>
+      <weather-parts-rain slot="1"></weather-parts-rain>
+      <weather-parts-rain slot="2"></weather-parts-rain>
+    </weather-two-clouds>
+    <!-- broken-clouds -->
+    <weather-three-clouds color-change>
+    </weather-three-clouds>
+    <weather-three-clouds color-change>
+      <weather-parts-snow slot="1"></weather-parts-snow>
+      <weather-parts-snow slot="2"></weather-parts-snow>
+      <weather-parts-snow slot="3"></weather-parts-snow>
+    </weather-three-clouds>
+
+    <!-- scattered-clouds -->
+    <weather-three-clouds>
+    </weather-three-clouds>
     <weather-mist></weather-mist>
   </fieldset>
   <fieldset>
