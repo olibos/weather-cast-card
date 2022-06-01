@@ -5,6 +5,12 @@ import {
 } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
+import {
+  cloud,
+  cloudColorChange,
+  common,
+} from './styles';
+
 @customElement('weather-snow')
 export class Snow extends LitElement
 {
@@ -101,107 +107,9 @@ export class Snow extends LitElement
 
     static get styles() 
     {
-        return css`
-:host {
-    display: inline-block;
-    width: 150px;
-    height: 150px;
-    position: relative;
-}
-
-:host,
-div,
-div:before,
-div:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+        return [common, cloud, cloudColorChange, css`
 .cloud {
-    position: absolute;
-    width: 40%;
-    height: 40%;
-    top: 27.5%;
     left: 30%;
-    background: #fffafa;
-    border-radius: 44% 56% 49% 51%/71% 63% 37% 29%;
-    animation: cloudColorChange 3s linear infinite;
-}
-
-@keyframes cloudColorChange {
-
-    0%,
-    100% {
-        background: #fffafa;
-    }
-
-    50% {
-        background: #a3a3a3;
-    }
-}
-
-.cloud:before {
-    content: "";
-    position: absolute;
-    width: 85%;
-    height: 85%;
-    top: 10%;
-    left: -50%;
-    right: -50%;
-    background: inherit;
-    right: unset;
-    border-radius: 52% 48% 58% 42%/43% 61% 39% 57%;
-}
-
-.cloud:after {
-    content: "";
-    position: absolute;
-    width: 85%;
-    height: 85%;
-    top: 10%;
-    left: -50%;
-    right: -50%;
-    background: inherit;
-    left: unset;
-    border-radius: 52% 48% 49% 51%/43% 61% 39% 57%;
-}
-
-.cloud-copy {
-    z-index: 2;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: inherit;
-    border-radius: inherit;
-}
-
-.cloud-copy:before {
-    content: "";
-    position: absolute;
-    width: 85%;
-    height: 85%;
-    top: 10%;
-    left: -50%;
-    right: -50%;
-    background: inherit;
-    right: unset;
-    border-radius: 52% 48% 58% 42%/43% 61% 39% 57%;
-}
-
-.cloud-copy:after {
-    content: "";
-    position: absolute;
-    width: 85%;
-    height: 85%;
-    top: 10%;
-    left: -50%;
-    right: -50%;
-    background: inherit;
-    left: unset;
-    border-radius: 52% 48% 49% 51%/43% 61% 39% 57%;
 }
 
 .snow {
@@ -494,6 +402,6 @@ div:after {
     animation: snowFlakeFall 4s 3s linear infinite;
     right: 10%;
 }
-        `;
+        `];
     }
 }

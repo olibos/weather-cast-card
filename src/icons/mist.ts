@@ -5,6 +5,8 @@ import {
 } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
+import { common } from './styles';
+
 @customElement('weather-mist')
 export class Mist extends LitElement
 {
@@ -22,23 +24,7 @@ export class Mist extends LitElement
 
     static get styles() 
     {
-        return css`
-:host {
-    display: inline-block;
-    width: 150px;
-    height: 150px;
-    position: relative;
-}
-
-:host,
-div,
-div:before,
-div:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+        return [common, css`
 .mist {
     position: absolute;
     width: 100%;
@@ -95,7 +81,6 @@ div:after {
     width: 50%;
     top: 76%;
     left: 25%;
-}
-        `;
+}`];
     }
 }
